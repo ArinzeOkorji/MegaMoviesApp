@@ -34,8 +34,6 @@ export class MovieListComponent implements OnInit {
             movie['isLiked'] = false;
             movie['isNotLiked'] = true;
           });
-          console.log(res);
-          console.log(this.movieCollection);
         },
         err => console.log(err)
       );
@@ -47,7 +45,6 @@ export class MovieListComponent implements OnInit {
   }
 
   addToFavorites(movie) {
-    console.log(`Fresh movie: ${movie}`);
     this.favoritesService.addToFavorites(movie);
   }
 

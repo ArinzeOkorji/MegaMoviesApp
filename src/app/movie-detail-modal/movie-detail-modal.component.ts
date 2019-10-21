@@ -28,11 +28,7 @@ export class MovieDetailModalComponent implements OnInit {
      this.favorites = [];
     }
  this.favorites.push(movie);
-    console.log(this.favorites);
     sessionStorage.setItem('Favorites', JSON.stringify(this.favorites));
-
-    const retrievedObject = sessionStorage.getItem('Favorites');
-    console.log('retrievedObject: ', JSON.parse(retrievedObject));
   }
 
 }

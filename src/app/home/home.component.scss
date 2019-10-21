@@ -78,8 +78,12 @@
     overflow-x: scroll;
     overflow-y: hidden;
     background-color: #1c1c1c;
+    position: sticky;
+    top: 0;
     @include for-lg {
         height: 10vh;
+        position: unset;
+        top: unset;
     }
     ul.genreTabs {
         list-style: none;

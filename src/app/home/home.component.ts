@@ -41,9 +41,6 @@ export class HomeComponent implements OnInit {
           // Format the release date
           result['release_date'] = new Date(result['release_date']).getFullYear();
         });
-        /* this.modalService.showModal();
-        this.modalService.modalId = 'search' */
-        console.log(this.searchResults);
       },
       (err) => {
         console.log(err);
