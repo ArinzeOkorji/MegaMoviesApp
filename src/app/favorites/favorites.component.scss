@@ -1,0 +1,67 @@
+//Fonts
+@font-face {
+    font-family: Roboto;
+    src: url('../../assets/fonts/Roboto/Roboto-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: RobotoBold;
+    src: url('../../assets/fonts/Roboto/Roboto-Bold.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: RobotoLight;
+    src: url('../../assets/fonts/Roboto/Roboto-Thin.ttf') format('opentype');
+}
+
+// Container
+.containers {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.main {
+    background: #000;
+    padding-top: 30px;
+    min-height: 100vh;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(149px, 1fr));
+    gap: 30px;
+}
+
+.singleMovie {
+    width: 100%;
+    .posterContainer {
+        height: 200px;
+        width: 100%;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    .movieInfo {
+        .movieTitle {
+            font-family: RobotoBold;
+            font-size: 16px;
+            color: #919191;
+            padding-top: 10px;
+            padding-bottom: 7px;
+        }
+        .releaseYear {
+            font-family: Roboto;
+            font-size: 16px;
+            color: #919191;
+        }
+    }
+}
+
+// When movie is liked, active is added ti the i element
+.icon.active {
+    color: #C90011;
+    svg {
+        fill: #C90011;
+    }
+}

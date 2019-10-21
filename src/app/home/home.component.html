@@ -1,0 +1,76 @@
+<!-- Landing page hero starts -->
+<div class="hero" style='background-image: url("/src/assets/img/hero.jpg")'>
+    <div class="layer">
+        <div class="containers panels">
+            <!-- Searc field starts -->
+            <form (ngSubmit)='search(searchForm)' #searchForm='ngForm'>
+                <input type="text" name='search' placeholder='Search Movie' [(ngModel)]='searchTerm' #input>
+                <button data-target='#search-result' appModalTrigger='search-results'>Search</button>
+            </form>
+            <!-- Searc field ends -->
+        </div>
+    </div>
+</div>
+<!-- Landing page hero ends -->
+
+<!-- Genre Tabs starts -->
+<div class='genreTabsContainer'>
+    <ul class='genreTabs'>
+        <li *ngFor='let genre of availableGenres'><a routerLinkActive='active' routerLink='{{genre.id}}'>{{genre.name}}</a></li>
+    </ul>
+</div>
+<!-- Genre Tabs ends -->
+
+
+<!-- Modal -->
+<app-movie-detail-modal elementId='search-results' title='Search results for "{{searchTerm | formatName:[16, "..."]}}"'>
+    <ul class='search-result-list'>
+        <li *ngFor='let movie of searchResults' appModalTrigger='search-result-details' (click)='showDetails(movie)'>
+            <div class='movie-poster-container'>
+                <img class='movie-poster' src="http://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="{{movie?.title}} poster" srcset="">
+            </div>
+            <div class='movie-info'>
+                <div class='movie-title'>{{movie?.title}}</div>
+                <div class='movie-release_date'>{{movie?.release_date}}</div>
+            </div>
+        </li>
+    </ul>
+</app-movie-detail-modal>
+
+
+<app-movie-detail-modal elementId='search-result-details' title='Movie Details'>
+    <div class="modalGrid">
+        <!-- Left column for movie poster -->
+        <div class="left-column">
+            <!-- Movie Poster -->
+            <div class='movie-poster-container'>
+                <img class='movie-poster' src="http://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="{{movie?.title}} poster" srcset="">
+            </div>
+        </div>
+
+        <!-- Right column for movie Details -->
+        <div class="right-column">
+            <div class="detail">
+                <label for="">Title:</label>
+                <span>{{movie?.title}}</span>
+            </div>
+            <div class="detail">
+                <label for="">Release Year:</label>
+                <span>{{movie?.release_date}}</span>
+            </div>
+            <div class="detail">
+                <label for="">Overview:</label>
+                <span>{{movie?.overview}}</span>
+            </div>
+            <div class="detail">
+                <label for="">Vote Average:</label>
+                <span>{{movie?.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+</app-movie-detail-modal>
+
+
+<div class="genreListContainer">
+    <router-outlet></router-outlet>
+</div>

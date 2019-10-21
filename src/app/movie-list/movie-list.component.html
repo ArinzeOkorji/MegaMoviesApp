@@ -1,0 +1,62 @@
+<div class="">
+    <div class="containers">
+        <div class="grid">
+            <!-- Single Movie starts -->
+            <div class='singleMovie' *ngFor='let movie of movieCollection'>
+                <!-- Movie Poster container starts -->
+                <div class='posterContainer'>
+                    <!-- Movie Poster starts -->
+                    <img (click)='showDetails(movie)' id="movie-poster" appModalTrigger='movie-details' src="http://image.tmdb.org/t/p/w185//{{movie.poster_path}}" alt="{{movie?.title}} poster">
+                    <!-- Movie Poster ends -->
+                </div>
+                <!-- Movie Poster container ends -->
+
+                <!-- Movie Info starts -->
+                <div class="movieInfo">
+                    <div class="movieTitle">{{movie.title | formatName:[16, '...']}}</div>
+                    <div class='d-flex justify-content-between'>
+                        <div class="releaseYear">{{movie.release_date}}</div>
+                        <div class='icon' (click)='movie.isLiked === true ? movie.isLiked = false : movie.isLiked = true; addToFavorites(movie);' [ngClass]='{active: movie.isLiked}'>
+                            <i class="fas fa-heart"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Movie Info ends -->
+            </div>
+            <!-- Single Movie ends -->
+        </div>
+    </div>
+</div>
+
+<app-movie-detail-modal elementId='movie-details' title='Movie Details'>
+    <div class="modalGrid">
+        <!-- Left column for movie poster -->
+        <div class="left-column">
+            <!-- Movie Poster -->
+            <div class='movie-poster-container'>
+                <img class='movie-poster' src="http://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="{{movie?.title}} poster" srcset="">
+            </div>
+        </div>
+
+        <!-- Right column for movie Details -->
+        <div class="right-column">
+            <div class="detail">
+                <label for="">Title:</label>
+                <span>{{movie?.title}}</span>
+            </div>
+            <div class="detail">
+                <label for="">Release Year:</label>
+                <span>{{movie?.release_date}}</span>
+            </div>
+            <div class="detail">
+                <label for="">Overview:</label>
+                <span>{{movie?.overview}}</span>
+            </div>
+            <div class="detail">
+                <label for="">Vote Average:</label>
+                <span>{{movie?.vote_average}}</span>
+            </div>
+        </div>
+    </div>
+</app-movie-detail-modal>

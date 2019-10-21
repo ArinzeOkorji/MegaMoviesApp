@@ -1,0 +1,70 @@
+//Fonts
+@font-face {
+    font-family: Roboto;
+    src: url('../../assets/fonts/Roboto/Roboto-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: RobotoBold;
+    src: url('../../assets/fonts/Roboto/Roboto-Bold.ttf') format('opentype');
+}
+
+@mixin for-lg {
+    @media screen and (min-width: 996px) {
+        @content;
+    }
+}
+
+.modal-dialog {
+    max-width: unset;
+}
+
+.modal-content {
+    // position: fixed;
+    margin-right: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .26);
+    // left: 20vw;
+    // top: 10vh;
+    z-index: 100;
+    margin: 0 auto;
+    @include for-lg {
+        width: 60vw;
+    }
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 15px;
+        align-items: center;
+        border-bottom: 1px solid #e2e1e1;
+        margin-bottom: 30px;
+        h3 {
+            font-family: RobotoBold, sans-serif;
+            color: #444;
+            margin: 0;
+            font-size: 16px;
+            @include for-lg {
+                font-size: initial;
+            }
+        }
+        span.close {
+            color: #999;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    }
+    .modal-body {
+        height: 70vh;
+        overflow-y: scroll;
+    }
+}
+
+.back-drop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .75);
+    z-index: 50;
+}

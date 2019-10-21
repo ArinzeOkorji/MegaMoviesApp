@@ -1,0 +1,192 @@
+//Fonts
+@font-face {
+    font-family: Roboto;
+    src: url('../../assets/fonts/Roboto/Roboto-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: RobotoBold;
+    src: url('../../assets/fonts/Roboto/Roboto-Bold.ttf') format('opentype');
+}
+
+@mixin for-lg {
+    @media screen and (min-width: 996px) {
+        @content;
+    }
+}
+
+.genreListContainer {
+    background: #000;
+    padding-top: 30px;
+    min-height: 700px;
+}
+
+// Container
+.containers {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+// Hero
+.hero {
+    background-position-y: 18%;
+    background-repeat: no-repeat;
+    height: 60vh;
+    .layer {
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .panels {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+        form {
+            text-align: center;
+            input {
+                display: block;
+                width: 85vw;
+                height: 10vh;
+                border-radius: 8px;
+                border: none;
+                padding-left: 30px;
+                font-family: Roboto, sans-serif;
+                @include for-lg {
+                    width: 50vw;
+                }
+            }
+             ::placeholder {
+                font-weight: 600;
+                color: #252525;
+            }
+            button {
+                padding: 12px 40px;
+                margin-top: 23px;
+                color: #fff;
+                background-color: #C90011;
+                font-weight: 600;
+                font-family: RobotoBold, sans-serif;
+                border: none;
+            }
+        }
+    }
+}
+
+//Genre tabs
+.genreTabsContainer {
+    height: 7vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    background-color: #1c1c1c;
+    @include for-lg {
+        height: 10vh;
+    }
+    ul.genreTabs {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        background-color: #1c1c1c;
+        li {
+            a {
+                padding: 15px 30px;
+                cursor: pointer;
+                text-decoration: none;
+                white-space: nowrap;
+                border-right: 1px solid #fff;
+                color: #fff;
+                font-family: RobotoBold, sans-serif;
+                background-color: #1c1c1c;
+                transition: .2s ease;
+            }
+            a:hover {
+                background-color: #C90011;
+                border-right-color: #252525;
+            }
+            a.active {
+                background-color: #C90011;
+                border-right-color: #252525;
+            }
+        }
+    }
+}
+
+///// Styles for the content for the search list
+.search-result-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+        display: flex;
+        border-bottom: 1px solid #b5b5b5;
+        padding-bottom: 15px;
+        padding-top: 15px;
+        .movie-poster-container {
+            height: 200px;
+            width: 150px;
+            .movie-poster {
+                height: 100%;
+            }
+        }
+        .movie-info {
+            width: 100%;
+            margin-left: 20px;
+            .movie-title {
+                font-size: 32px;
+            }
+            .movie-release_date {
+                font-size: 25px;
+            }
+        }
+    }
+    li:first-child {
+        padding-top: 0px;
+    }
+}
+
+///// Styles for the content for the movie-details
+.modalGrid {
+    display: grid;
+    height: 100%;
+    @include for-lg {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .left-column {
+        align-self: center;
+        height: 100%;
+        .movie-poster-container {
+            width: 80%;
+            margin: 0 auto;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            @include for-lg {
+                position: sticky;
+                top: 0;
+            }
+            .movie-poster {
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+            }
+        }
+    }
+    .right-column {
+        width: 80%;
+        @include for-lg {
+            margin: 0 auto;
+        }
+        .detail {
+            margin-bottom: 20px;
+            label {
+                font-family: RobotoBold, sans-serif;
+                color: #444;
+            }
+            span {
+                font-family: Roboto, sans-serif;
+                margin-left: 5px;
+                line-height: 1.7em;
+            }
+        }
+    }
+}

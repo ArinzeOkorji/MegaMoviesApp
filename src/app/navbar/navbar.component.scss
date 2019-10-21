@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+//fonts
+@font-face {
+    font-family: RobotoBold;
+    src: url('../../assets/fonts/Roboto/Roboto-Bold.ttf') format('opentype');
+}
+
+@mixin for-lg {
+    @media screen and (min-width: 996px) {
+        @content;
+    }
+}
+
+// Navbar
+.navbar {
+    background-color: #1b1b1b;
+    display: flex;
+    @include for-lg {
+        height: 9vh;
+    }
+    //Nav
+    ul.nav {
+        list-style: none;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        //Nav-list
+        li.nav-list {
+            // Nav links
+            a.nav-link {
+                padding: 15px 30px;
+                padding-bottom: 18px;
+                text-decoration: none;
+                border-top: 4px solid transparent;
+                font-family: RobotoBold;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+        //Nav list on hover
+        li.nav-list:hover {
+            // Nav links
+            a.nav-link {
+                border-top: 4px solid #cb001d;
+            }
+        }
+        //Nav list when active
+        li.nav-list.active {
+            // Nav links
+            a.nav-link {
+                border-top: 4px solid #cb001d;
+                background-color: #202020;
+            }
+        }
+    }
+}

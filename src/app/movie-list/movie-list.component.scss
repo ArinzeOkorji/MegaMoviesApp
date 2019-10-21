@@ -1,0 +1,118 @@
+//Fonts
+@font-face {
+    font-family: Roboto;
+    src: url('../../assets/fonts/Roboto/Roboto-Regular.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: RobotoBold;
+    src: url('../../assets/fonts/Roboto/Roboto-Bold.ttf') format('opentype');
+}
+
+@font-face {
+    font-family: RobotoLight;
+    src: url('../../assets/fonts/Roboto/Roboto-Thin.ttf') format('opentype');
+}
+
+@mixin for-lg {
+    @media screen and (min-width: 996px) {
+        @content;
+    }
+}
+
+// Container
+.containers {
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(149px, 1fr));
+    gap: 30px;
+}
+
+.singleMovie {
+    width: 100%;
+    .posterContainer {
+        height: 200px;
+        width: 100%;
+        img {
+            height: 100%;
+            width: 100%;
+            color: #fff;
+            font-family: Roboto, sans-serif;
+        }
+    }
+    .movieInfo {
+        .movieTitle {
+            font-family: RobotoBold, sans-serif;
+            ;
+            font-size: 16px;
+            color: #919191;
+            padding-top: 10px;
+            padding-bottom: 7px;
+        }
+        .releaseYear {
+            font-family: Roboto, sans-serif;
+            ;
+            font-size: 16px;
+            color: #919191;
+        }
+    }
+}
+
+// When movie is liked, active is added ti the i element
+.icon.active {
+    color: #C90011;
+    svg {
+        fill: #C90011;
+    }
+}
+
+///// Styles for the content for the movie-details
+.modalGrid {
+    display: grid;
+    height: 100%;
+    @include for-lg {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .left-column {
+        align-self: center;
+        height: 100%;
+        .movie-poster-container {
+            width: 80%;
+            margin: 0 auto;
+            height: 80%;
+            display: flex;
+            align-items: center;
+            @include for-lg {
+                position: sticky;
+                top: 0;
+            }
+            .movie-poster {
+                width: 100%;
+                height: 100%;
+                border-radius: 8px;
+            }
+        }
+    }
+    .right-column {
+        width: 80%;
+        @include for-lg {
+            margin: 0 auto;
+        }
+        .detail {
+            margin-bottom: 20px;
+            label {
+                font-family: RobotoBold, sans-serif;
+                color: #444;
+            }
+            span {
+                font-family: Roboto, sans-serif;
+                margin-left: 5px;
+                line-height: 1.7em;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+<div class="main">
+    <div class="containers">
+        <div class="grid">
+            <!-- Single Movie starts -->
+            <div class='singleMovie' *ngFor='let movie of favorites'>
+                <!-- Movie Poster container starts -->
+                <div class='posterContainer'>
+                    <!-- Movie Poster starts -->
+                    <img appModalTrigger='movie-details' src="http://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="Wonder Woman poster">
+                    <!-- Movie Poster ends -->
+                </div>
+                <!-- Movie Poster container ends -->
+
+                <!-- Movie Info starts -->
+                <div class="movieInfo">
+                    <div class="movieTitle">{{movie?.title | formatName:[16, '...']}}</div>
+                    <div class='d-flex justify-content-between'>
+                        <div class="releaseYear">{{movie?.release_date}}</div>
+                        <div class='icon' (click)='movie.isLiked === true ? movie.isLiked = false : movie.isLiked = true; addToFavorites(movie);' [ngClass]='{active: movie.isLiked}'>
+                            <i class="fas fa-heart"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Movie Info ends -->
+            </div>
+            <!-- Single Movie ends -->
+        </div>
+    </div>
+</div>
