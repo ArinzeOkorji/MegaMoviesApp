@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -15,6 +18,9 @@ import { JQ_TOKEN } from './common/jquery';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { MovieNameFormatter } from './common/movie-name-length.pipe';
+import { SignupComponent } from './auth/signup/signup.component';
+import { CacheService } from './cache.service';
+import { CacheInterceptor } from './cache.interceptor';
 
 const jQuery = window['$'];
 
@@ -27,9 +33,12 @@ const jQuery = window['$'];
     MovieDetailModalComponent,
     ModalTriggerDirective,
     FavoritesComponent,
-    MovieNameFormatter
+    MovieNameFormatter,
+    SignupComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     BrowserModule,
     RouterModule.forRoot(router),
     HttpClientModule,
@@ -38,8 +47,11 @@ const jQuery = window['$'];
   providers: [
     ModalService,
     {
-      provide: JQ_TOKEN, useValue: jQuery
-    }
+      provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true
+    },
+    {
+      provide: JQ_TOKEN, useValue: jQuery, multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })
