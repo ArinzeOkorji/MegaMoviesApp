@@ -37,7 +37,6 @@ const jQuery = window['$'];
     SignupComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     BrowserModule,
     RouterModule.forRoot(router),
