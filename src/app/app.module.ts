@@ -23,6 +23,7 @@ import { CacheService } from './cache.service';
 import { CacheInterceptor } from './cache.interceptor';
 
 const jQuery = window['$'];
+console.log(jQuery);
 
 @NgModule({
   declarations: [
@@ -37,7 +38,6 @@ const jQuery = window['$'];
     SignupComponent
   ],
   imports: [
-    AngularFirestoreModule,
     BrowserModule,
     RouterModule.forRoot(router),
     HttpClientModule,

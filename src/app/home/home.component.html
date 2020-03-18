@@ -27,7 +27,7 @@
     <ul class='search-result-list'>
         <li *ngFor='let movie of searchResults' appModalTrigger='search-result-details' (click)='showDetails(movie)'>
             <div class='movie-poster-container'>
-                <img class='movie-poster' src="http://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="{{movie?.title}} poster" srcset="">
+                <img class='movie-poster' src="https://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="{{movie?.title}} poster" srcset="">
             </div>
             <div class='movie-info'>
                 <div class='movie-title'>{{movie?.title}}</div>
@@ -44,7 +44,7 @@
         <div class="left-column">
             <!-- Movie Poster -->
             <div class='movie-poster-container'>
-                <img class='movie-poster' src="http://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="{{movie?.title}} poster" srcset="">
+                <img class='movie-poster' src="https://image.tmdb.org/t/p/w185//{{movie?.poster_path}}" alt="{{movie?.title}} poster" srcset="">
             </div>
         </div>
 
